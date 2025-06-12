@@ -6,7 +6,7 @@ const Navbar = () => {
     <nav className='px-16 py-3 border-b border-slate-300'>
      <div>Logo</div>
 
-     <ul>
+     <ul className='flex items-center gap-5'>
         <li>
             <Link href={'/'}>Home</Link>
         </li>
