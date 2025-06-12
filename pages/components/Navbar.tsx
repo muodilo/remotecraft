@@ -8,7 +8,7 @@ const Navbar = () => {
 
      <ul className='flex items-center gap-5'>
         <li>
-            <Link href={'/'}>Home</Link>
+            <Link className='font-bold' href={'/'}>Home</Link>
         </li>
         <li>
             <Link href={'/'}>Jobs</Link>
