@@ -21,7 +21,7 @@ const Navbar = () => {
         </li>
      </ul>
      <div>
-        <input type="text" placeholder='Search'/>
+        <input type="text" placeholder='Search' className='border px-5 py-2 rounded-lg'/>
      </div>
 
     </nav>
