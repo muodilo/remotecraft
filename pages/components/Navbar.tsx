@@ -20,6 +20,9 @@ const Navbar = () => {
             <Link href={'/'}>Companies</Link>
         </li>
      </ul>
+     <div>
+        <input type="text" placeholder='Search'/>
+     </div>
 
     </nav>
   )
