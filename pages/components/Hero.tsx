@@ -7,7 +7,7 @@ const Hero = () => {
       className="hero min-h-130 rounded-xl overflow-hidden"
       style={{
         backgroundImage:
-          "url(https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR5Y18gTe-1m2gFmm_k6OclmD2wl8j2KAbMWUYAp5KLmc2KgjtY)",
+          "url('/office1.jpg')",
       }}
     >
       <div className="hero-overlay "></div>
