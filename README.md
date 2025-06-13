@@ -89,6 +89,6 @@ See `reflection.md` for answers to questions like:
 
 ## 🚀 Deployment
 
-This project is ready to be deployed to [Vercel](https://vercel.com) — the recommended platform for Next.js applications.
+This project is deployed to [Here](https://remotecraft.vercel.app/) 
 
 ---
