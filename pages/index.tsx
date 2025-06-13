@@ -1,9 +1,6 @@
-import Image from "next/image";
 import Hero from "./components/Hero";
 import { GetStaticProps } from "next";
-import { dummyJobs } from "@/constants/dummyJobs";
 import { Job } from "@/types/job";
-import Link from "next/link";
 import FeaturedJobs from "./components/FeaturedJobs";
 
 interface HomePageProps {
