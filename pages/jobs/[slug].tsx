@@ -1,6 +1,8 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import Loading from "../components/Loading";
+import Link from "next/link";
+import { slugify } from "../company/[slug]"; 
 
 
 export interface RemotiveJob {
@@ -81,9 +83,9 @@ export default function JobDetailPage({ job }: JobDetailPageProps) {
     <div>
       <div className="flex items-center justify-between">
         <h1 className="md:text-3xl text-xl font-bold mb-4">{job.title}</h1>
-        <button className="bg-primaryColor px-3 py-1 rounded-xl text-nowrap">
-          Save Job
-        </button>
+        <Link href={`/company/${slugify(job.company_name)}`} className="bg-secondaryColor text-white px-3 py-1 rounded-xl text-nowrap">
+            Visit company
+        </Link>
       </div>
 
       <p className="text-neutral-400 mb-5">at {job.company_name}</p>
