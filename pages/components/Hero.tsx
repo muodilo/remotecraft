@@ -11,7 +11,7 @@ const Hero = () => {
       }}
     >
       <div className="hero-overlay "></div>
-      <div className="w-full h-full flex items-end px-10 text-white">
+      <div className="w-full h-full flex items-end lg:px-10 px-5 text-white">
         <div className="mb-10">
           <h1 className="text-5xl font-black mb-7">
             Find your next remote job

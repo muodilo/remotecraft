@@ -8,9 +8,8 @@ import { IoSettingsOutline } from "react-icons/io5";
 const Navbar = () => {
   return (
     <nav>
-
-        {/* for large screen */}
-      <div className="md:px-16 px-5 py-3 bg-white z-50 border-b border-primaryColor items-center flex justify-between shadow fixed left-0 right-0">
+      {/* for large screen */}
+      <div className="md:px-16 px-5 py-3 bg-white z-50 border-b border-primaryColor items-center lg:flex hidden justify-between shadow fixed left-0 right-0 ">
         <div className="flex items-center gap-15">
           <Logo />
           <ul className="flex items-center gap-5">
@@ -43,6 +42,9 @@ const Navbar = () => {
         </div>
       </div>
       {/* for small screen */}
+      <div className="lg:hidden ">
+
+      </div>
     </nav>
   );
 };
