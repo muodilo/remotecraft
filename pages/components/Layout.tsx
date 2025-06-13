@@ -6,7 +6,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className={`${workSans.className} min-h-screen  text-black`}>
       <Navbar/>
-      <main className="">{children}</main>
+      <main className="lg:px-43 md:px-16 px-5 pt-20">{children}</main>
     </div>
   )
 }
