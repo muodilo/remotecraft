@@ -1,7 +1,13 @@
 import Hero from "./components/Hero";
 import { GetStaticProps } from "next";
 import { Job } from "@/types/job";
-import FeaturedJobs from "./components/FeaturedJobs";
+import dynamic from "next/dynamic";
+import Loading from "./components/Loading";
+// import FeaturedJobs from "./components/FeaturedJobs";
+
+const FeaturedJobs = dynamic(() => import("./components/FeaturedJobs"), {
+  loading: () => <Loading />
+});
 
 interface HomePageProps {
   jobs:Job[]

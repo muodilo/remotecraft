@@ -28,13 +28,13 @@ export default function FeaturedJobs({ jobs = [] }: FeaturedJobsProps) {
               <div>
                 <p className="font-bold text-sm">{job.title} at {job.company_name}</p>
                 <p className="text-sm text-neutral-500">
-                  {job.salary || "Salary"}
+                  {job.salary ? job.salary : "Salary not disclosed"}
                 </p>
               </div>
             </div>
 
             <Link
-              href={`/`} 
+              href={`/jobs/${job.title.toLowerCase().replace(/\s+/g, "-")}-${job.id}`}
               className="bg-primaryColor px-3 py-1 rounded-xl text-sm "
             >
               View
