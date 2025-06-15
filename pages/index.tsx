@@ -12,18 +12,31 @@ interface HomePageProps {
   jobs:Job[]
 }
 
-export const getStaticProps:GetStaticProps<HomePageProps>=async ()=>{
-  const res = await fetch('https://remotive.com/api/remote-jobs')
-  const data = await res.json()
-  const jobs=data.jobs
+export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
+  try {
+    const res = await fetch(process.env.NEXT_PUBLIC_JOBS_API as string);
+    if (!res.ok) {
+      throw new Error(`Failed to fetch jobs: ${res.status}`);
+    }
 
-  return {
-    props:{
-      jobs
-    },
-    revalidate:30
+    const data = await res.json();
+    const jobs = data.jobs;
+
+    return {
+      props: { jobs },
+      revalidate: 30,
+    };
+  } catch (error) {
+    console.error("Error fetching jobs:", error);
+
+    return {
+      props: { jobs: [] },
+      revalidate: 30,
+    };
   }
-}
+};
+
+
 
 export default function Home({jobs}:HomePageProps) {
   return (
