@@ -19,19 +19,23 @@ const Navbar = () => {
 
   return (
     <nav className="fixed inset-x-0 top-0 z-50 border-b border-primaryColor bg-white shadow">
-      <div className="mx-auto flex  items-center justify-between px-5 py-3 md:px-16">
-        <Logo />
+      <div className="mx-auto flex items-center justify-between px-5 py-3 md:px-16">
+        {/* Left side: Logo + NavLinks */}
+        <div className="flex items-center gap-10">
+          <Logo />
 
-        <ul className="hidden items-center gap-5 lg:flex">
-          {navLinks.map(({ label, href }) => (
-            <li key={label}>
-              <Link className="font-medium" href={href}>
-                {label}
-              </Link>
-            </li>
-          ))}
-        </ul>
+          <ul className="hidden lg:flex items-center gap-5">
+            {navLinks.map(({ label, href }) => (
+              <li key={label}>
+                <Link className="font-medium" href={href}>
+                  {label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
 
+        {/* Right side: Search and Icons */}
         <div className="hidden items-center gap-5 lg:flex">
           <SearchBar />
           <div className="flex items-center gap-2">
@@ -44,6 +48,7 @@ const Navbar = () => {
           </div>
         </div>
 
+        {/* Mobile Toggle Button */}
         <button
           onClick={toggleMenu}
           aria-expanded={isOpen}
@@ -54,6 +59,7 @@ const Navbar = () => {
         </button>
       </div>
 
+      {/* Mobile Menu */}
       {isOpen && (
         <div className="space-y-4 px-5 pb-4 lg:hidden">
           <ul className="flex flex-col gap-4">
