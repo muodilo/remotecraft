@@ -30,42 +30,63 @@ const buildSlug = (job: RemotiveJob) =>
   `${job.title.toLowerCase().replace(/\s+/g, "-")}-${job.id}`;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await fetch("https://remotive.com/api/remote-jobs");
-  const data: RemotiveApiResponse = await res.json();
-  const jobs = data.jobs;
+  try {
+    const res = await fetch(process.env.NEXT_PUBLIC_JOBS_API as string);
+    if (!res.ok) throw new Error(`Failed to fetch jobs: ${res.status}`);
 
-  const paths = jobs.map((job) => ({
-    params: { slug: buildSlug(job) },
-  }));
+    const data: RemotiveApiResponse = await res.json();
+    const jobs = data.jobs;
 
-  return {
-    paths,
-    fallback: true,
-  };
+    const paths = jobs.map((job) => ({
+      params: { slug: buildSlug(job) },
+    }));
+
+    return {
+      paths,
+      fallback: true,
+    };
+  } catch (error) {
+    console.error("Error fetching job paths:", error);
+    return {
+      paths: [],
+      fallback: true,
+    };
+  }
 };
-
 
 export const getStaticProps: GetStaticProps<JobDetailPageProps> = async ({
   params,
 }) => {
-  const slug = params?.slug as string;
+  try {
+    const slug = params?.slug as string;
 
-  const res = await fetch("https://remotive.com/api/remote-jobs");
-  const data: RemotiveApiResponse = await res.json();
-  const jobs = data.jobs;
+    const res = await fetch(process.env.NEXT_PUBLIC_JOBS_API as string);
+    if (!res.ok) throw new Error(`Failed to fetch jobs: ${res.status}`);
 
-  const job = jobs.find((job) => buildSlug(job) === slug) ?? null;
+    const data: RemotiveApiResponse = await res.json();
+    const jobs = data.jobs;
 
-  if (!job) {
-    return { notFound: true };
+    const job = jobs.find((job) => buildSlug(job) === slug) ?? null;
+
+    if (!job) {
+      return { notFound: true };
+    }
+
+    return {
+      props: {
+        job,
+      },
+      revalidate: 30,
+    };
+  } catch (error) {
+    console.error("Error fetching job detail:", error);
+    return {
+      props: {
+        job: null,
+      },
+      revalidate: 30,
+    };
   }
-
-  return {
-    props: {
-      job,
-    },
-    revalidate: 30, 
-  };
 };
 
 

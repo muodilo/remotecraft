@@ -19,7 +19,7 @@ const Navbar = () => {
 
   return (
     <nav className="fixed inset-x-0 top-0 z-50 border-b border-primaryColor bg-white shadow">
-      <div className="mx-auto flex max-w-screen-xl items-center justify-between px-5 py-3 md:px-16">
+      <div className="mx-auto flex  items-center justify-between px-5 py-3 md:px-16">
         <Logo />
 
         <ul className="hidden items-center gap-5 lg:flex">
